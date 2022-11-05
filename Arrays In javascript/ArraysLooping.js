@@ -1,11 +1,11 @@
 'use strict';
 
 const negi = [
-    'Jonas',
-    'Schmedtmann',
-    2037 - 1991,
+    'Sushant',
+    'Negi',
+    2022 - 1998,
     'teacher',
-    ['Michael', 'Peter', 'Steven'],
+    ['Santosh', 'Vinay', 'Sachin'],
     true
 ];
 const types = [];
