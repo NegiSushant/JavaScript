@@ -49,10 +49,6 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-// Practical example
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('mushrooms', 'spinach');
-}
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
