@@ -50,7 +50,6 @@ const restaurant = {
   },
 };
 
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
 ///////////////////////////////////////
 // Rest Pattern and Parameters
