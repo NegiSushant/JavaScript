@@ -95,3 +95,133 @@ const markHigherBMI = markBMI > johnBMI;
 
 console.log(markHigherBMI);
 
+const firstName1 = "Sushant";
+const lastName1 = "Negi";
+const bYear = 1998;
+
+const year1 = 2025;
+
+const sushant =
+  "I'm " + firstName1 + ", a " + (year1 - bYear) + " year old " + job + "!";
+console.log(sushant);
+
+/* ------------template litral----------------*/
+const sushantNew = `I'm ${firstName1}, a ${year1 - bYear} year old ${job}!!!!`;
+console.log(sushantNew);
+console.log(`Just a regular string............`);
+
+console.log(
+  "String with \n\
+multiple \n\
+lines."
+);
+
+console.log(`String
+multiple
+line!`);
+
+/*--------------------conditional statements------------ */
+const ages = 17;
+const isOldEnough = ages >= 18;
+console.log(isOldEnough);
+
+if (isOldEnough) {
+  console.log("You are eligible to drive car!😊");
+} else {
+  const yearLeft = 18 - ages;
+  console.log(`You are too yong. Wait another ${yearLeft} years.`);
+}
+
+const birthYears = 1998;
+let century;
+if (birthYears <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
+console.log(century);
+
+/*
+CHALLENGE #2
+Use the BMI example from Challenge #1, and the code you already wrote, and improve it:
+
+1. Print a nice output to the console, telling the user who has the higher BMI. The message can be either:
+
+"Mark's BMI is higher than John's!" or "John's BMI is higher than Mark's!".
+
+2. Modify the outputs above to use template literals to include the BMI values in the outputs.
+
+Example: "Mark's BMI (28.3) is higher than John's (23.9)!" or "John's BMI (29.1) is higher than Mark's (27)!".
+
+Note: Don't round the BMI values. Leave them as they are
+ */
+
+if (johnBMI > markBMI) {
+  console.log(`John's BMI is higher than Mark's!`);
+} else {
+  console.log(`Mark's BMI is higher than John's!`);
+}
+
+/*---------------------Type Conversion & Coercion-------------- */
+//type conversion: manually convert one data type to other
+const inputYear = "1998";
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number("Sushant"));
+console.log(typeof NaN);
+
+console.log(String(23), 23);
+
+//type coercion: automatically convert data type
+console.log("I am " + 23 + " years old");
+console.log("23" - "10" - 3); // 10
+console.log("23" + "10" + 3); //23103
+
+let n = "1" + 1;
+n = n - 1;
+console.log(n); //10
+
+/*------------------- Truthy and Falsy ------------------------ */
+//Falsy: Value does not convert into boolean Datatype
+// 5 falsy values: 0, '', undefined, null, NaN
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean("Sushant"));
+console.log(Boolean({}));
+console.log(Boolean(""));
+
+const hasDriversLicense = true;
+const hasGoodVision = false;
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+if (shouldDrive) {
+  console.log(`Sara is able to drive!`);
+} else {
+  console.log(`Someone else should drive...!`);
+}
+/*
+CHALLENGE #3
+There are two gymnastics teams: Dolphins and Koalas. They compete against each other 3 times. The winner with the highest average score wins a trophy!
+
+Your tasks:
+
+1. Calculate the average score for each team, using the test data included below. The average score for Dolphins should be assigned to the scoreDolphins variable, and the average score of Koalas should be assigned to the scoreKoalas variable.
+
+2. Compare the team's average scores to determine the winner of the competition, and print to the console:
+
+"Dolphins win the trophy" if Dolphins win, or
+
+"Koalas win the trophy" if Koalas win, or
+
+"Both win the trophy" if their average scores are equal.
+
+
+
+TEST DATA: Dolphins scored 96, 108, and 89. Koalas scored 88, 91, and 110.
+*/
