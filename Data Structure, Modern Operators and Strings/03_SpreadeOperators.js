@@ -1,10 +1,10 @@
 // Data needed for first part of the section
 const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  name: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
 
   openingHours: {
     thu: {
@@ -27,7 +27,7 @@ const restaurant = {
   orderDelivery: function ({
     starterIndex = 1,
     mainIndex = 0,
-    time = '20:00',
+    time = "20:00",
     address,
   }) {
     console.log(
@@ -46,48 +46,48 @@ const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 console.log(badNewArr);
 
+//spread operator
 const newArr = [1, 2, ...arr];
 console.log(newArr);
 
 console.log(...newArr);
 console.log(1, 2, 7, 8, 5);
 
-const newMenu = [...restaurant.mainMenu, 'ABC'];
+const newMenu = [...restaurant.mainMenu, "ABC"];
 console.log(newMenu);
 
-//Copy Array
+//ShallowCopy Array
 const mainMenuCopy = [...restaurant.mainMenu];
 
-//Join 2 array
+//Join 2 array together
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 console.log(menu);
 
-//Iterables: array, strings, maps, sets, Not objects
-
-const str = 'Negi';
-const letters = [...str, ' ', 'S.'];
-console.log(letters);
-console.log(...str);
+//Iterables are array, strings, maps, sets, but not objects
+const str = "Negi";
+const letters = [...str, " ", "S."];
+console.log(letters); //['N', 'e', 'g', 'i', ' ', 'S.']
+console.log(...str); //N e g i
 //console.log(`${...str} Negi`);
 
 //Real-world example
 const ingredients = [
   prompt("Let's make pasta Ingredients 1?"),
-  prompt('Ingredients 2?'),
-  prompt('Ingredients 2?'),
+  prompt("Ingredients 2?"),
+  prompt("Ingredients 3?"),
 ];
 
-console.log(ingredients);
+console.log(ingredients); //["a", "b", "c"]
 
-restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]); // (a, b, c)
 
-restaurant.orderPasta(...ingredients);
+restaurant.orderPasta(...ingredients); // (a, b, c)
 
-//objects
-const newResturants = {foundediIn: 1999, ...restaurant, founder: 'PQRSTU' };
+//also work on objects even though objects are not itrables
+const newResturants = { foundediIn: 1999, ...restaurant, founder: "PQRSTU" };
 console.log(newResturants);
 
 const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'ABCDE';
+restaurantCopy.name = "ABCDE";
 console.log(restaurant.name);
 console.log(restaurant.name);

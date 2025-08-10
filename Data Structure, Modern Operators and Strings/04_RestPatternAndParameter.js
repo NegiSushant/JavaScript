@@ -1,13 +1,12 @@
-'use strict';
-
+"use strict";
 
 // Data needed for first part of the section
 const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  name: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
 
   openingHours: {
     thu: {
@@ -30,7 +29,7 @@ const restaurant = {
   orderDelivery: function ({
     starterIndex = 1,
     mainIndex = 0,
-    time = '20:00',
+    time = "20:00",
     address,
   }) {
     console.log(
@@ -50,18 +49,18 @@ const restaurant = {
   },
 };
 
-
 ///////////////////////////////////////
 // Rest Pattern and Parameters
 // 1) Destructuring
 
-// SPREAD, because on RIGHT side of =
+// SPREAD syntax, because on RIGHT side of the assignment operator(=)
 const arr = [1, 2, ...[3, 4]];
 
-// REST, because on LEFT side of =
+// REST syntax, because on LEFT side of the assignment operator(=)
 const [a, b, ...others] = [1, 2, 3, 4, 5];
 console.log(a, b, others);
 
+// we can use the ...(three dots) on the both side of the the assignment operator(=)
 const [pizza, , risotto, ...otherFood] = [
   ...restaurant.mainMenu,
   ...restaurant.starterMenu,
@@ -86,5 +85,5 @@ add(8, 2, 5, 3, 2, 1, 4);
 const x = [23, 5, 7];
 add(...x);
 
-restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
-restaurant.orderPizza('mushrooms');
+restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
+restaurant.orderPizza("mushrooms");
