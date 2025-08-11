@@ -20,3 +20,6 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 GOOD LUCK 😀
  */
+
+
+//1. Create one player array for each team (variables 'players1' and 'players2')
