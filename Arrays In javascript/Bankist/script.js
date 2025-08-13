@@ -64,7 +64,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const displayMovements = function (movements) {
   movements.forEach(function (mov, i) {
     containerMovements.innerHTML = '';
-    
+
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -76,6 +76,66 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance}€`;
+};
+calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      // console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCorrected = dogsJulia.slice();
+//   dogsJuliaCorrected.splice(0, 1);
+//   dogsJuliaCorrected.splice(-2);
+
+//   const dogs = dogsJuliaCorrected.concat(dogsKate);
+//   console.log(dogs);
+
+//   dogs.forEach(function (dog, i) {
+//     if (dog >= 3) {
+//       console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old!`);
+//     } else {
+//       console.log(`Dog number ${i + 1} is still a puppy!`);
+//     }
+//   });
+// };
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
