@@ -61,18 +61,27 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   movements.forEach(function (mov, i) {
     containerMovements.innerHTML = '';
 
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const movs = sort
+      ? movements.slice().sort((a, b) => {
+          a - b;
+        })
+      : movements;
 
-    const html = `
-    <div class="movements__row">
-      <div class="movements__type movements__type--${type}">${i + 1}</div>
-      <div class="movements__value">${mov}€</div>
-    </div>`;
-    containerMovements.insertAdjacentHTML('afterbegin', html);
+    movs.forEach(function (mov, i) {
+      const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+      const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${i + 1}</div>
+        <div class="movements__value">${mov}€</div>
+      </div>`;
+
+      containerMovements.insertAdjacentHTML('afterbegin', html);
+    });
   });
 };
 // displayMovements(account1.movements);
@@ -169,10 +178,47 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount > 0.1)) {
+    //Add movement
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    //Update UI
+    updateUI(currentAccount);
+  }
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
-  // if()
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    //Delete account
+    accounts.splice(index, 1);
+
+    //Hide UI
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
 });
+
+let sorted = false;
+
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
 
 // const checkDogs = function (dogsJulia, dogsKate) {
 //   const dogsJuliaCorrected = dogsJulia.slice();
